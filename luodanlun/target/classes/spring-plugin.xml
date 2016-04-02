@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:amq="http://activemq.apache.org/schema/core" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" 
+	xmlns:cxf="http://cxf.apache.org/core" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://activemq.apache.org/schema/core
+		http://activemq.apache.org/schema/core/activemq-core.xsd
+		http://cxf.apache.org/jaxws
+		http://cxf.apache.org/schemas/jaxws.xsd
+		http://cxf.apache.org/core
+		http://cxf.apache.org/schemas/core.xsd">
+
+	<!-- redis POOL配置 -->
+	<!-- <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="10" />
+		<property name="maxWait" value="1000" />
+		<property name="testOnBorrow" value="true" />
+		连接超时，采用默认
+	</bean> -->
+
+	<!-- jedis pool配置 -->
+	<!-- <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1" value="${jedis.url}" />
+		<constructor-arg index="2" value="6379" />
+	</bean> -->
+
+	<!-- memcache 客户端 -->
+	<!-- <bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<property name="servers" value="${memcached.url}" />
+		<property name="failureMode" value="Retry" />
+		<property name="hashAlg">
+			<value type="net.spy.memcached.DefaultHashAlgorithm">KETAMA_HASH</value>
+		</property>
+		<property name="opTimeout" value="1000" />
+		<property name="readBufferSize" value="16384" />
+		<property name="transcoder">
+			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+				<property name="compressionThreshold" value="1024" />
+			</bean>
+		</property>
+	</bean> -->
+
+	<!-- <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.ym.163.com" />
+		<property name="username" value="service@baobei762.com" />
+		<property name="password" value="ymc912120" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean> -->
+	
+	<!-- Quartz配置 -->
+	<!-- <bean id="countRating" class="com.yaozhitech.service.impl.CountRatingQutizServiceImpl">
+	</bean>
+	 -->
+	<!-- <bean id="SpringQtzJobMethod0"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="countRating" />
+		</property>
+		<property name="targetMethod">  
+		<value>work</value>
+		</property>
+	</bean> -->
+
+	<!-- ======================== 调度触发器 ======================== -->
+	<!-- <bean id="CronTriggerBean0" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="SpringQtzJobMethod0"></property>
+		<property name="cronExpression" value="0 0 6,8,10,14,17,19,21,23 * * ?"></property>
+	</bean> -->
+
+	<!-- ======================== 调度工厂 ======================== -->
+	<!-- <bean id="SpringJobSchedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="CronTriggerBean0" />
+			</list>
+		</property>
+	</bean> -->
+   <!-- 
+   dubbo
+   -->
+</beans>
